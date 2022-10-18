@@ -1,21 +1,18 @@
 import Link from "next/link";
 import { Fragment } from "react";
+import { BagDetail } from "../../components/bags/BagDetail";
+import { COLLECTIONS } from "../../utils/utils";
 
 const Bags = () => {
   return (
     <Fragment>
-      <h1>Bags Page</h1>
-      <ul>
-        <li>
-          <Link href="/bags/bag1">Bag 1</Link>
-        </li>
-        <li>
-          <Link href="/bags/bag2">Bag 2</Link>
-        </li>
-        <li>
-          <Link href="/bags/bag3">Bag 3</Link>
-        </li>
-      </ul>
+      <BagDetail
+        id={2}
+        name="Dummy name"
+        collection={COLLECTIONS.CLASSIC}
+        imageUrl="https://i.etsystatic.com/23134588/r/il/becdc1/2542111396/il_794xN.2542111396_g0l7.jpg"
+        description="Dummy description"
+      />
     </Fragment>
   );
 };
