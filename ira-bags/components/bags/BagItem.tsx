@@ -6,7 +6,7 @@ export const BagItem = (props: BagItemType) => {
   const router = useRouter();
 
   const showDetailsHandler = () => {
-    router.push("/" + props.id);
+    router.push("/bags/" + props.id);
   };
 
   return (

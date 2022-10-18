@@ -1,7 +1,6 @@
-import Link from "next/link";
+import { GetStaticProps } from "next";
 import { BagList } from "../components/bags/BagList";
 import { COLLECTIONS, BagItemType } from "../utils/utils";
-import { VideoContainer } from "../components/content/VideoContainer";
 
 const MOK_BAGS: BagItemType[] = [
   {
@@ -38,13 +37,34 @@ const MOK_BAGS: BagItemType[] = [
   },
 ];
 
-const HomePage = () => {
+const HomePage = (props: any) => {
   return (
     <div>
       <h1>Home Page</h1>
-      <BagList bagItems={MOK_BAGS}></BagList>
+      <BagList bagItems={props.loadedBags}></BagList>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  // fetch data from an API
+  return {
+    props: {
+      loadedBags: MOK_BAGS,
+    },
+    // revalidate: 10 // refresh on every 10 seconds if data from BE changes often
+  };
+}
+
+// export async function getServerProps(context: any) {
+//   // this is alternative if you want pre render for every request to DB - frequent changes
+//   const req = context.req;
+//   const res = context.res;
+//   return {
+//     props: {
+//       loadedBags: MOK_BAGS,
+//     },
+//   };
+// }
 
 export default HomePage;
